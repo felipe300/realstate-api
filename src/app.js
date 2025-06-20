@@ -1,4 +1,4 @@
-import express from "express";
+const express = require("express");
 const app = express();
 
 const inmuebles = [
@@ -11,4 +11,4 @@ app.get("/api/inmuebles", (_req, res) => {
   res.json(inmuebles);
 });
 
-export default app;
+module.exports = app;
