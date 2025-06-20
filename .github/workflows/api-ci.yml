@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: Test API en Node.js ${{matrix.node }}
+    name: Test API en Node.js ${{ matrix.node }}
     runs-on: ubuntu-latest
 
     strategy:
@@ -27,7 +27,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
