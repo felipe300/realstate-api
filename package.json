@@ -3,12 +3,9 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "app.js",
-	"directories": {
-		"start": "node src/app.js",
-		"test": "jest"
-	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js"
+		"test": "jest"
 	},
 	"keywords": [],
 	"author": "",
