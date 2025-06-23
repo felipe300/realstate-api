@@ -37,6 +37,9 @@ jobs:
       - name: Ejecutar pruebas con Jest
         run: npm test
 
+      - name: Despliegue
+        run: echo "TODO Despliegue"
+
       - name: Reportar éxito
         if: success()
         run: echo "✅ API funcional en Node ${{ matrix.node }}"
