@@ -34,6 +34,9 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Npm Audit Fix
+        run: npm audit
+
       - name: Ejecutar pruebas con Jest
         run: npm test
 
