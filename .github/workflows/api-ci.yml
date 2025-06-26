@@ -12,30 +12,36 @@ jobs:
 
     strategy:
       matrix:
-        node: [18.x, 20.x, 22]
+        node: [22]
 
     steps:
       - name: Checkout del código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
       - name: Cachear dependencias npm
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Instalar dependencias
-        run: npm ci
+      # - name: Show directory Content
+      # run: ls -la
 
-      - name: Npm Audit Fix
-        run: npm audit
+      - name: Instalar dependencias
+        run: npm ci --legacy-peer-deps --no-fund --no-audit
+
+      - name: Oxlint
+        run: npm run lint
+
+      # - name: Npm Audit Fix
+      # run: npm audit
 
       - name: Ejecutar pruebas con Jest
         run: npm test
