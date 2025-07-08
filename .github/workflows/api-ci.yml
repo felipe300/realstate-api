@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   test:
-    name: Test API en Node.js ${{ matrix.node }}
+    name: Node.js API Test ${{ matrix.node }}
     runs-on: ubuntu-latest
 
     strategy:
@@ -20,15 +20,15 @@ jobs:
         node: [20.x, 22]
 
     steps:
-      - name: Checkout del código
+      - name: Code Checkout
         uses: actions/checkout@v4
 
-      - name: Configurar Node.js
+      - name: Node.js Configuration
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Cachear dependencias npm
+      - name: Npm cache dependencies
         uses: actions/cache@v4
         with:
           path: ~/.npm
@@ -39,7 +39,7 @@ jobs:
       # - name: Show directory Content
       # run: ls -la
 
-      - name: Instalar dependencias
+      - name: Install dependencies
         run: npm ci --legacy-peer-deps --no-fund --no-audit
 
       - name: Oxlint
@@ -48,16 +48,16 @@ jobs:
       # - name: Npm Audit Fix
       # run: npm audit
 
-      - name: Ejecutar pruebas con Jest
+      - name: Testing with Jest
         run: npm test
 
-      - name: Despliegue
+      - name: Deployment
         run: echo "TODO Despliegue"
 
-      - name: Reportar éxito
+      - name: Report success
         if: success()
-        run: echo "✅ API funcional en Node ${{ matrix.node }}"
+        run: echo "✅ Functional API with NodeJs ${{ matrix.node }}"
 
-      - name: Reportar error
+      - name: Report Error
         if: failure()
-        run: echo "❌ Falla detectada en los tests para Node ${{ matrix.node }}"
+        run: echo "❌ Error detected in the tests for NodeJs ${{ matrix.node }}"
