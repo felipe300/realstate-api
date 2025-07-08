@@ -6,3 +6,4 @@ A Real state API to test GitHub Actions and more.
 - Git
 - GitHub
 - GitHub Actions
+- Oxlint
