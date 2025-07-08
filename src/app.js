@@ -1,14 +1,14 @@
 const express = require("express");
 const app = express();
 
-const inmuebles = [
-  { id: 1, direccion: "Cae 123", precio: 150000, tipo: "Apartamento" },
-  { id: 2, direccion: "Avenida 456", precio: 230000, tipo: "Casa" },
-  { id: 3, direccion: "Carrera 789", precio: 120000, tipo: "Estudio" },
+const state = [
+  { id: 1, address: "Cae 123", price: 150000, type: "Apartamento" },
+  { id: 2, address: "Avenida 456", price: 230000, type: "Casa" },
+  { id: 3, address: "Carrera 789", price: 120000, type: "Estudio" },
 ];
 
-app.get("/api/inmuebles", (_req, res) => {
-  res.json(inmuebles);
+app.get("/api/realstate", (_req, res) => {
+  res.json(state);
 });
 
 module.exports = app;
